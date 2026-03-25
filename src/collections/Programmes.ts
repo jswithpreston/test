@@ -1,0 +1,83 @@
+import type { CollectionConfig } from 'payload'
+
+export const Programmes: CollectionConfig = {
+  slug: 'programmes',
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'category', 'status'],
+    description: 'Ongoing LCI programmes — education, environment, health, peace, women empowerment, and more.',
+  },
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+    },
+    {
+      name: 'summary',
+      type: 'textarea',
+      admin: {
+        description: 'One-paragraph overview shown on programme listing pages.',
+      },
+    },
+    {
+      name: 'description',
+      type: 'richText',
+      required: true,
+    },
+    {
+      name: 'category',
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'Education & Scholarships', value: 'education' },
+        { label: 'Environmental Conservation', value: 'environment' },
+        { label: 'Health & Family Planning', value: 'health' },
+        { label: 'Peace & Reconciliation', value: 'peace' },
+        { label: 'Women Empowerment', value: 'women' },
+        { label: 'Cultural Heritage', value: 'cultural' },
+        { label: 'Youth Affairs', value: 'youth' },
+        { label: 'Investment & Development', value: 'investment' },
+      ],
+    },
+    {
+      name: 'featuredImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'highlights',
+      type: 'array',
+      admin: {
+        description: 'Key achievements or bullet points, e.g. "500+ scholarships secured in 2024".',
+      },
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'status',
+      type: 'select',
+      required: true,
+      defaultValue: 'active',
+      options: [
+        { label: 'Active', value: 'active' },
+        { label: 'Planned', value: 'planned' },
+        { label: 'Completed', value: 'completed' },
+      ],
+    },
+  ],
+}
