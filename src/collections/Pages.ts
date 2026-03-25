@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { slugify } from '../lib/slugify'
+import { isAdmin, isAdminOrEditor, publishedOrLoggedIn } from '../lib/access'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -7,11 +9,21 @@ export const Pages: CollectionConfig = {
     defaultColumns: ['title', 'slug', 'status'],
     description: 'Semi-static pages such as About, History of the Langi, Contact, and Governance.',
   },
+  hooks: {
+    beforeChange: [
+      ({ data, operation }) => {
+        if (operation === 'create' && data.title && !data.slug) {
+          data.slug = slugify(data.title)
+        }
+        return data
+      },
+    ],
+  },
   access: {
-    read: ({ req: { user } }) => {
-      if (user) return true
-      return { status: { equals: 'published' } }
-    },
+    read: publishedOrLoggedIn,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
   },
   fields: [
     {

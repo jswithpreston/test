@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { slugify } from '../lib/slugify'
+import { isAdmin, isAdminOrEditor } from '../lib/access'
 
 export const Activities: CollectionConfig = {
   slug: 'activities',
@@ -9,6 +11,19 @@ export const Activities: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
+  },
+  hooks: {
+    beforeChange: [
+      ({ data, operation }) => {
+        if (operation === 'create' && data.title && !data.slug) {
+          data.slug = slugify(data.title)
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {

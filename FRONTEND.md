@@ -36,6 +36,32 @@ All public collections support unauthenticated `GET`. Write operations require a
 
 Single document: `GET /api/posts/:id` or query by slug (see below).
 
+### Globals
+
+Globals are site-wide singletons — one record each, no pagination.
+
+```
+GET /api/globals/site-settings    ← site name, tagline, contact, social links, logo
+GET /api/globals/navigation       ← mainNav and footerNav arrays
+```
+
+Example nav item shape:
+```json
+{
+  "mainNav": [
+    { "label": "Home", "url": "/" },
+    { "label": "News", "url": "/news" },
+    {
+      "label": "Programmes", "url": "/programmes",
+      "children": [
+        { "label": "Education", "url": "/programmes/education-scholarships" }
+      ]
+    }
+  ],
+  "footerNav": [...]
+}
+```
+
 ### Query parameters
 
 ```

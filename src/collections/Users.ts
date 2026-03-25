@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { isAdmin, isLoggedIn } from '../lib/access'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -8,6 +9,12 @@ export const Users: CollectionConfig = {
     description: 'Admin and editor accounts for LCI staff.',
   },
   auth: true,
+  access: {
+    read: isLoggedIn,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
   fields: [
     {
       name: 'name',

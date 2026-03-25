@@ -4,6 +4,8 @@ import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
+import { SiteSettings } from './src/globals/SiteSettings'
+import { Navigation } from './src/globals/Navigation'
 import { Users } from './src/collections/Users'
 import { Media } from './src/collections/Media'
 import { Posts } from './src/collections/Posts'
@@ -35,6 +37,10 @@ export default buildConfig({
     Leadership,
     Pages,
     Clans,
+  ],
+  globals: [
+    SiteSettings,
+    Navigation,
   ],
   db: postgresAdapter({
     pool: {

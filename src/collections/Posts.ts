@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { slugify } from '../lib/slugify'
+import { isAdmin, isAdminOrEditor, publishedOrLoggedIn } from '../lib/access'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -8,10 +10,20 @@ export const Posts: CollectionConfig = {
     description: 'News, announcements, event reports, and press releases from LCI.',
   },
   access: {
-    read: ({ req: { user } }) => {
-      if (user) return true
-      return { status: { equals: 'published' } }
-    },
+    read: publishedOrLoggedIn,
+    create: isAdminOrEditor,
+    update: isAdminOrEditor,
+    delete: isAdmin,
+  },
+  hooks: {
+    beforeChange: [
+      ({ data, operation }) => {
+        if (operation === 'create' && data.title && !data.slug) {
+          data.slug = slugify(data.title)
+        }
+        return data
+      },
+    ],
   },
   fields: [
     {
