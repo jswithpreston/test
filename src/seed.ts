@@ -135,7 +135,7 @@ async function seed(payload: Payload) {
       category: 'education' as const,
       status: 'active' as const,
       summary:
-        'LCF secures scholarships and educational opportunities for young Langi across Uganda and beyond.',
+        'LCF secures scholarships and educational opportunities for young Lango across Uganda and beyond.',
       highlights: [
         { text: '500+ scholarships secured in 2024' },
         { text: 'Over 2,000 scholarships in 2025' },
@@ -226,7 +226,7 @@ async function seed(payload: Payload) {
       category: 'announcement',
       publishedAt: '2025-02-05T10:00:00.000Z',
       excerpt:
-        'Eng. Dr. Michael Moses Odongo Okune was officially sworn in as the Won Nyaci (Paramount Chief) of the Lango people on February 5, 2025, in a ceremony attended by government officials and thousands of Langi from across the sub-region.',
+        'Eng. Dr. Michael Moses Odongo Okune was officially sworn in as the Won Nyaci (Paramount Chief) of the Lango people on February 5, 2025, in a ceremony attended by government officials and thousands of Lango from across the sub-region.',
     },
     {
       title: 'Lango Cultural Foundation Launches Greening Lango Initiative',
@@ -238,7 +238,7 @@ async function seed(payload: Payload) {
         'The Won Nyaci announced the official launch of the Greening Lango programme, with a bold target of planting one million trees across the nine districts of the Lango sub-region to combat deforestation and climate change.',
     },
     {
-      title: 'LCF Secures Over 2,000 Scholarships for Langi Students in 2025',
+      title: 'LCF Secures Over 2,000 Scholarships for Lango Students in 2025',
       slug: 'scholarships-2025',
       status: 'published' as const,
       category: 'programme-update',
@@ -293,7 +293,7 @@ async function seed(payload: Payload) {
       district: 'oyam',
     },
     {
-      title: "Won Nyaci's Easter Message to the Langi People",
+      title: "Won Nyaci's Easter Message to the Lango People",
       slug: 'easter-message-2026',
       status: 'completed' as const,
       startDate: '2026-04-05T00:00:00.000Z',

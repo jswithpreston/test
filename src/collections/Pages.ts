@@ -7,7 +7,7 @@ export const Pages: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'status'],
-    description: 'Semi-static pages such as About, History of the Langi, Contact, and Governance.',
+    description: 'Semi-static pages such as About, History of the Lango, Contact, and Governance.',
   },
   hooks: {
     beforeChange: [

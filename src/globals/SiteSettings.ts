@@ -20,13 +20,13 @@ export const SiteSettings: GlobalConfig = {
     {
       name: 'tagline',
       type: 'text',
-      defaultValue: 'Preserving and Promoting the Heritage of the Langi People',
+      defaultValue: 'Preserving and Promoting the Heritage of the Lango People',
     },
     {
       name: 'description',
       type: 'textarea',
       defaultValue:
-        'The Lango Cultural Foundation is the official cultural institution of the Langi people of Uganda, serving over 2.7 million people across nine districts in the Lango sub-region.',
+        'The Lango Cultural Foundation is the official cultural institution of the Lango people of Uganda, serving over 2.7 million people across nine districts in the Lango sub-region.',
       admin: {
         description: 'Used as the default meta description across the site.',
       },

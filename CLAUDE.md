@@ -3,7 +3,7 @@
 ## Project Overview
 
 Official website for the **Lango Cultural Foundation (LCF)**, the cultural institution of the
-Langi people of Uganda. The site serves ~2.7 million people across nine districts in the Lango
+Lango people of Uganda. The site serves ~2.7 million people across nine districts in the Lango
 sub-region of north-central Uganda: Alebtong, Amolatar, Apac, Dokolo, Kole, Kwania, Lira,
 Otuke, and Oyam.
 
