@@ -47,7 +47,6 @@ export const Programmes: CollectionConfig = {
     {
       name: 'description',
       type: 'richText',
-      required: true,
     },
     {
       name: 'category',

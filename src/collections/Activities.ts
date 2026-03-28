@@ -40,7 +40,6 @@ export const Activities: CollectionConfig = {
     {
       name: 'description',
       type: 'richText',
-      required: true,
     },
     {
       name: 'startDate',

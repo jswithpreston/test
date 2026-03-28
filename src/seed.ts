@@ -361,4 +361,4 @@ const main = async () => {
   process.exit(0)
 }
 
-main()
+await main()
