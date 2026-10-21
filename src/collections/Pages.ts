@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import { slugify } from '../lib/slugify.ts'
-import { isAdmin, isAdminOrEditor, publishedOrLoggedIn } from '../lib/access.ts'
+import { slugify } from '../lib/slugify'
+import { isAdmin, isAdminOrEditor, publishedOrLoggedIn } from '../lib/access'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',

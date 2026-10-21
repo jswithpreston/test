@@ -9,7 +9,7 @@
 
 import type { Payload } from 'payload'
 import { getPayload } from 'payload'
-import config from '../payload.config.ts'
+import config from '../payload.config'
 
 async function seed(payload: Payload) {
   console.log('🌱 Seeding LCI placeholder content...\n')
