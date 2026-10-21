@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import type { Post, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_POSTS } from '@/lib/mockData'
 import PostCard from '@/components/cards/PostCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
   title: 'News & Announcements',
   description:
-    'Latest news, announcements, event reports, and press releases from the Lango Cultural Foundation.',
+    'Latest news, announcements, event reports, and press releases from the LANGO CULTURAL INSTITUTION.',
 }
 
 const CATEGORIES = [
@@ -33,7 +34,28 @@ async function getPosts(page: number, category: string): Promise<PayloadResponse
     `/api/posts?${params}`,
     { next: { revalidate: 60 } },
   )
-  return data ?? { docs: [], totalDocs: 0, limit: 12, page: 1, totalPages: 0, hasNextPage: false, hasPrevPage: false, pagingCounter: 1, prevPage: null, nextPage: null }
+
+  if (data && data.docs && data.docs.length > 0) {
+    return data
+  }
+
+  let filtered = MOCK_POSTS
+  if (category) {
+    filtered = filtered.filter((p) => p.category === category)
+  }
+
+  return {
+    docs: filtered,
+    totalDocs: filtered.length,
+    limit: 12,
+    page: 1,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false,
+    pagingCounter: 1,
+    prevPage: null,
+    nextPage: null,
+  }
 }
 
 export default async function NewsPage({
@@ -59,7 +81,7 @@ export default async function NewsPage({
           <SectionHeader
             eyebrow="Stay Informed"
             title="News &amp; Announcements"
-            subtitle={`${totalDocs} published articles from the Lango Cultural Foundation.`}
+            subtitle={`${totalDocs} published articles from the LANGO CULTURAL INSTITUTION.`}
             light
           />
         </div>

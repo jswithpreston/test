@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Programme, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_PROGRAMMES } from '@/lib/mockData'
 import Badge from '@/components/ui/Badge'
 import RichTextRenderer from '@/components/RichTextRenderer'
 
@@ -12,7 +13,8 @@ async function getProgramme(slug: string): Promise<Programme | null> {
     `/api/programmes?where[slug][equals]=${encodeURIComponent(slug)}&limit=1&depth=2`,
     { next: { revalidate: 60 } },
   )
-  return data?.docs[0] ?? null
+  if (data?.docs && data.docs.length > 0) return data.docs[0]
+  return MOCK_PROGRAMMES.find((p) => p.slug === slug) ?? null
 }
 
 export async function generateMetadata({

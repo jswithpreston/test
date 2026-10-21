@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import type { Leader, PayloadResponse } from '@/lib/types'
 import { LEADER_CATEGORY_LABELS } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_LEADERSHIP } from '@/lib/mockData'
 import LeadershipCard from '@/components/cards/LeadershipCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
   title: 'Leadership',
   description:
-    'The Won Nyaci, ministers, and leadership of the Lango Cultural Foundation.',
+    'The Won Nyaci, ministers, and leadership of the LANGO CULTURAL INSTITUTION.',
 }
 
 async function getLeaders(): Promise<Leader[]> {
@@ -16,7 +17,8 @@ async function getLeaders(): Promise<Leader[]> {
     `/api/leadership?sort=order&limit=100`,
     { next: { revalidate: 300 } },
   )
-  return data?.docs ?? []
+  const docs = data?.docs ?? []
+  return docs.length > 0 ? docs : MOCK_LEADERSHIP
 }
 
 const CATEGORY_ORDER: Leader['category'][] = [
@@ -51,7 +53,7 @@ export default async function LeadershipPage() {
           <SectionHeader
             eyebrow="The Won Nyaci &amp; His Council"
             title="Our Leadership"
-            subtitle="The governance structure of the Lango Cultural Foundation — from the Paramount Chief to the Council."
+            subtitle="The governance structure of the LANGO CULTURAL INSTITUTION — from the Paramount Chief to the Council."
             light
           />
         </div>

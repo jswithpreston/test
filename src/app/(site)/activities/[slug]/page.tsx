@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import type { Activity, PayloadResponse } from '@/lib/types'
 import { DISTRICT_LABELS } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_ACTIVITIES } from '@/lib/mockData'
 import Badge from '@/components/ui/Badge'
 import RichTextRenderer from '@/components/RichTextRenderer'
 
@@ -23,7 +24,8 @@ async function getActivity(slug: string): Promise<Activity | null> {
     `/api/activities?where[slug][equals]=${encodeURIComponent(slug)}&limit=1&depth=2`,
     { next: { revalidate: 60 } },
   )
-  return data?.docs[0] ?? null
+  if (data?.docs && data.docs.length > 0) return data.docs[0]
+  return MOCK_ACTIVITIES.find((a) => a.slug === slug) ?? null
 }
 
 export async function generateMetadata({

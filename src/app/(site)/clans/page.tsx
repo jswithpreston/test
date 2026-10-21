@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Clan, PayloadResponse } from '@/lib/types'
 import { DISTRICT_LABELS } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_CLANS } from '@/lib/mockData'
 import ClanCard from '@/components/cards/ClanCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 
@@ -20,7 +21,26 @@ async function getClans(district: string, page: number): Promise<PayloadResponse
     `/api/clans?${params}`,
     { next: { revalidate: 300 } },
   )
-  return data ?? { docs: [], totalDocs: 0, limit: 24, page: 1, totalPages: 0, hasNextPage: false, hasPrevPage: false, pagingCounter: 1, prevPage: null, nextPage: null }
+
+  if (data?.docs && data.docs.length > 0) return data
+
+  let filtered = MOCK_CLANS
+  if (district) {
+    filtered = filtered.filter((c) => c.district === district)
+  }
+
+  return {
+    docs: filtered,
+    totalDocs: filtered.length,
+    limit: 24,
+    page: 1,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false,
+    pagingCounter: 1,
+    prevPage: null,
+    nextPage: null,
+  }
 }
 
 export default async function ClansPage({

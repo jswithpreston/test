@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import type { NavItem } from '@/lib/types'
@@ -45,25 +46,42 @@ export default function Navbar({ navItems }: NavbarProps) {
           {/* Brand */}
           <Link
             href="/"
-            className="flex flex-col leading-none group"
+            className="flex items-center gap-3 group"
             onClick={() => { setMobileOpen(false); setOpenDropdown(null) }}
           >
-            <span
-              className="text-lg md:text-xl font-600 tracking-wider uppercase group-hover:opacity-90 transition-opacity"
+            <div
+              className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden flex-shrink-0 shadow-sm"
               style={{
-                fontFamily: 'var(--font-display)',
-                color: 'var(--color-cream)',
-                letterSpacing: '0.08em',
+                border: '1.5px solid var(--color-ochre)',
+                backgroundColor: 'var(--color-cream)',
               }}
             >
-              Lango Cultural
-            </span>
-            <span
-              className="text-[0.6rem] tracking-[0.22em] uppercase"
-              style={{ color: 'var(--color-ochre-light)', fontFamily: 'var(--font-body)' }}
-            >
-              Foundation · Uganda
-            </span>
+              <Image
+                src="/images/logo.jpeg"
+                alt="LANGO CULTURAL INSTITUTION Logo"
+                fill
+                className="object-contain p-0.5"
+                priority
+              />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span
+                className="text-sm sm:text-base md:text-lg font-600 tracking-wider uppercase group-hover:opacity-90 transition-opacity"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  color: 'var(--color-cream)',
+                  letterSpacing: '0.06em',
+                }}
+              >
+                LANGO CULTURAL INSTITUTION
+              </span>
+              <span
+                className="text-[0.58rem] sm:text-[0.62rem] tracking-[0.2em] uppercase mt-1"
+                style={{ color: 'var(--color-ochre-light)', fontFamily: 'var(--font-body)' }}
+              >
+                Tekwaro Lango · Uganda
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}

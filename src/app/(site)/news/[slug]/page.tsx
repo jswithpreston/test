@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import type { Post, PayloadResponse } from '@/lib/types'
 import { POST_CATEGORY_LABELS } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_POSTS } from '@/lib/mockData'
 import Badge from '@/components/ui/Badge'
 import RichTextRenderer from '@/components/RichTextRenderer'
 import PostCard from '@/components/cards/PostCard'
@@ -24,7 +25,8 @@ async function getPost(slug: string): Promise<Post | null> {
     `/api/posts?where[slug][equals]=${encodeURIComponent(slug)}&limit=1&depth=2`,
     { next: { revalidate: 60 } },
   )
-  return data?.docs[0] ?? null
+  if (data?.docs && data.docs.length > 0) return data.docs[0]
+  return MOCK_POSTS.find((p) => p.slug === slug) ?? null
 }
 
 async function getRelatedPosts(category?: string, excludeId?: string): Promise<Post[]> {
@@ -40,9 +42,11 @@ async function getRelatedPosts(category?: string, excludeId?: string): Promise<P
       `/api/posts?${params}`,
       { next: { revalidate: 60 } },
     )
-    return data?.docs.filter((p) => p.id !== excludeId).slice(0, 3) ?? []
+    const docs = data?.docs.filter((p) => p.id !== excludeId).slice(0, 3) ?? []
+    if (docs.length > 0) return docs
+    return MOCK_POSTS.filter((p) => p.id !== excludeId).slice(0, 3)
   } catch {
-    return []
+    return MOCK_POSTS.filter((p) => p.id !== excludeId).slice(0, 3)
   }
 }
 

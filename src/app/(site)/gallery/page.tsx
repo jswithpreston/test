@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import type { GalleryAlbum, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_GALLERY_ALBUMS } from '@/lib/mockData'
 import GalleryAlbumCard from '@/components/cards/GalleryAlbumCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Photo galleries and albums from events, ceremonies, and activities of the Lango Cultural Foundation.',
+    'Photo galleries and albums from events, ceremonies, and activities of the LANGO CULTURAL INSTITUTION.',
 }
 
 async function getAlbums(): Promise<PayloadResponse<GalleryAlbum>> {
@@ -15,7 +16,19 @@ async function getAlbums(): Promise<PayloadResponse<GalleryAlbum>> {
     `/api/gallery?sort=-date&limit=24&depth=1`,
     { next: { revalidate: 120 } },
   )
-  return data ?? { docs: [], totalDocs: 0, limit: 24, page: 1, totalPages: 0, hasNextPage: false, hasPrevPage: false, pagingCounter: 1, prevPage: null, nextPage: null }
+  if (data?.docs && data.docs.length > 0) return data
+  return {
+    docs: MOCK_GALLERY_ALBUMS,
+    totalDocs: MOCK_GALLERY_ALBUMS.length,
+    limit: 24,
+    page: 1,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false,
+    pagingCounter: 1,
+    prevPage: null,
+    nextPage: null,
+  }
 }
 
 export default async function GalleryPage() {

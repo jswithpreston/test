@@ -46,21 +46,21 @@ export default function DistrictsMap() {
             >
               Nine Districts.
               <br />
-              <span style={{ color: 'var(--color-ochre-light)' }}>One Foundation.</span>
+              <span style={{ color: 'var(--color-ochre-light)' }}>One Institution.</span>
             </h2>
 
             <p
               className="text-base leading-relaxed max-w-md"
               style={{ color: 'rgba(245,239,224,0.65)', fontFamily: 'var(--font-body)' }}
             >
-              The Lango Cultural Foundation serves all nine districts of the Lango sub-region
+              The LANGO CULTURAL INSTITUTION serves all nine districts of the Lango sub-region
               in north-central Uganda, reaching approximately 2.7 million Lango people with
               cultural, educational, and development programmes.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-2">
               <Button href="/about" variant="primary" size="sm">
-                About LCF
+                About LCI
               </Button>
               <Button href="/clans" variant="outline-light" size="sm">
                 Explore 149 Clans

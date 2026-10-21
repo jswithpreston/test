@@ -31,7 +31,7 @@ const PROGRAMME_CATEGORIES = [
     slug: 'women',
     label: 'Women',
     icon: '🌸',
-    description: 'Agong Foundation — women\'s empowerment & rights',
+    description: "Women's economic empowerment & family rights",
   },
   {
     slug: 'cultural',

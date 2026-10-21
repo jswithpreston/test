@@ -91,7 +91,7 @@ export const Navigation: GlobalConfig = {
         },
       ],
       defaultValue: [
-        { label: 'About LCF', url: '/about' },
+        { label: 'About LCI', url: '/about' },
         { label: 'History', url: '/history' },
         { label: 'Governance', url: '/governance' },
         { label: 'Programmes', url: '/programmes' },

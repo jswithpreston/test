@@ -1,5 +1,6 @@
 import type { Leader, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_LEADERSHIP } from '@/lib/mockData'
 import LeadershipCard from '@/components/cards/LeadershipCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Button from '@/components/ui/Button'
@@ -9,7 +10,8 @@ async function getLeadership(): Promise<Leader[]> {
     '/api/leadership?sort=order&limit=6',
     { next: { revalidate: 300 } },
   )
-  return data?.docs ?? []
+  const docs = data?.docs ?? []
+  return docs.length > 0 ? docs : MOCK_LEADERSHIP
 }
 
 export default async function LeadershipHighlight() {
@@ -25,7 +27,7 @@ export default async function LeadershipHighlight() {
           <SectionHeader
             eyebrow="Leadership"
             title="Our Leadership"
-            subtitle="The Won Nyaci and the leadership of the Lango Cultural Foundation guiding the Lango people."
+            subtitle="The Won Nyaci and the leadership of the LANGO CULTURAL INSTITUTION guiding the Lango people."
           />
           <Button href="/leadership" variant="ghost" size="sm" className="self-start md:self-auto flex-shrink-0">
             Full Leadership →

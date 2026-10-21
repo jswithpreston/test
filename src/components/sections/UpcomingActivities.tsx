@@ -1,5 +1,6 @@
 import type { Activity, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_ACTIVITIES } from '@/lib/mockData'
 import ActivityCard from '@/components/cards/ActivityCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Button from '@/components/ui/Button'
@@ -9,7 +10,8 @@ async function getUpcomingActivities(): Promise<Activity[]> {
     '/api/activities?where[status][equals]=upcoming&sort=startDate&limit=3',
     { next: { revalidate: 60 } },
   )
-  return data?.docs ?? []
+  const docs = data?.docs ?? []
+  return docs.length > 0 ? docs : MOCK_ACTIVITIES.slice(0, 3)
 }
 
 export default async function UpcomingActivities() {

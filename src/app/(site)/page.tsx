@@ -6,12 +6,13 @@ import LatestNews from '@/components/sections/LatestNews'
 import UpcomingActivities from '@/components/sections/UpcomingActivities'
 import ProgrammesHighlight from '@/components/sections/ProgrammesHighlight'
 import LeadershipHighlight from '@/components/sections/LeadershipHighlight'
+import GalleryShowcase from '@/components/sections/GalleryShowcase'
 import DistrictsMap from '@/components/sections/DistrictsMap'
 
 export const metadata: Metadata = {
-  title: 'Lango Cultural Foundation — Official Website',
+  title: 'LANGO CULTURAL INSTITUTION — Official Website',
   description:
-    'The official website of the Lango Cultural Foundation — preserving, documenting, and promoting the heritage of the Lango people of Uganda.',
+    'The official website of the LANGO CULTURAL INSTITUTION — preserving, documenting, and promoting the heritage of the Lango people of Uganda.',
 }
 
 /** Thin placeholder shown while an async section is loading */
@@ -45,6 +46,9 @@ export default function HomePage() {
       <Suspense fallback={<SectionFallback dark />}>
         <LeadershipHighlight />
       </Suspense>
+
+      {/* Visual Heritage Showcase */}
+      <GalleryShowcase />
 
       {/* Static — no data fetch */}
       <DistrictsMap />

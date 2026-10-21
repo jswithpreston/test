@@ -3,13 +3,14 @@ import Link from 'next/link'
 import type { Programme, PayloadResponse } from '@/lib/types'
 import { PROGRAMME_CATEGORY_LABELS } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_PROGRAMMES } from '@/lib/mockData'
 import ProgrammeCard from '@/components/cards/ProgrammeCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
   title: 'Programmes',
   description:
-    'The Lango Cultural Foundation\'s ongoing programmes in education, environment, health, peace, women\'s empowerment, and more.',
+    'The LANGO CULTURAL INSTITUTION\'s ongoing programmes in education, environment, health, peace, women\'s empowerment, and more.',
 }
 
 async function getProgrammes(category: string): Promise<PayloadResponse<Programme>> {
@@ -20,7 +21,26 @@ async function getProgrammes(category: string): Promise<PayloadResponse<Programm
     `/api/programmes?${params}`,
     { next: { revalidate: 60 } },
   )
-  return data ?? { docs: [], totalDocs: 0, limit: 24, page: 1, totalPages: 0, hasNextPage: false, hasPrevPage: false, pagingCounter: 1, prevPage: null, nextPage: null }
+
+  if (data?.docs && data.docs.length > 0) return data
+
+  let filtered = MOCK_PROGRAMMES
+  if (category) {
+    filtered = filtered.filter((p) => p.category === category)
+  }
+
+  return {
+    docs: filtered,
+    totalDocs: filtered.length,
+    limit: 24,
+    page: 1,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false,
+    pagingCounter: 1,
+    prevPage: null,
+    nextPage: null,
+  }
 }
 
 const CATEGORY_ICONS: Record<string, string> = {

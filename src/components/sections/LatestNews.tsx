@@ -1,5 +1,6 @@
 import type { Post, PayloadResponse } from '@/lib/types'
 import { fetchAPI } from '@/lib/api'
+import { MOCK_POSTS } from '@/lib/mockData'
 import PostCard from '@/components/cards/PostCard'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Button from '@/components/ui/Button'
@@ -9,7 +10,8 @@ async function getLatestPosts(): Promise<Post[]> {
     '/api/posts?sort=-publishedAt&limit=3&where[status][equals]=published',
     { next: { revalidate: 60 } },
   )
-  return data?.docs ?? []
+  const docs = data?.docs ?? []
+  return docs.length > 0 ? docs : MOCK_POSTS.slice(0, 3)
 }
 
 export default async function LatestNews() {
@@ -22,7 +24,7 @@ export default async function LatestNews() {
           <SectionHeader
             eyebrow="Stay Informed"
             title="News &amp; Announcements"
-            subtitle="The latest from the Lango Cultural Foundation — events, programmes, and community updates."
+            subtitle="The latest from the LANGO CULTURAL INSTITUTION — events, programmes, and community updates."
           />
           <Button href="/news" variant="ghost" size="sm" className="self-start md:self-auto flex-shrink-0">
             All News →

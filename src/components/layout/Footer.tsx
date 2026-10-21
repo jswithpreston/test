@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { NavItem, SiteSettings } from '@/lib/types'
 
 // Fallback quick links used when the navigation global isn't available
 const FALLBACK_FOOTER_NAV: NavItem[] = [
   { label: 'Home',           url: '/' },
-  { label: 'About LCF',      url: '/about' },
+  { label: 'About LCI',      url: '/about' },
   { label: 'News',           url: '/news' },
   { label: 'Activities',     url: '/activities' },
   { label: 'Programmes',     url: '/programmes' },
@@ -31,7 +32,7 @@ export default function Footer({ footerNav, siteSettings }: FooterProps) {
 
   const instagramUrl = siteSettings?.instagramUrl ?? 'https://www.instagram.com/langoinstitute'
   const facebookUrl  = siteSettings?.facebookUrl  ?? 'https://www.facebook.com/LangoCommunityNA'
-  const siteName     = siteSettings?.siteName     ?? 'Lango Cultural Foundation'
+  const siteName     = siteSettings?.siteName     ?? 'LANGO CULTURAL INSTITUTION'
   const tagline      = siteSettings?.tagline      ?? 'Preserving, documenting, and promoting the heritage of the Lango people of Uganda.'
 
   // Extract the Instagram handle for display (strip URL down to @handle)
@@ -55,21 +56,39 @@ export default function Footer({ footerNav, siteSettings }: FooterProps) {
 
           {/* Column 1 — Brand & About */}
           <div className="flex flex-col gap-5">
-            <div>
-              <h2
-                className="text-2xl font-600 tracking-widest uppercase leading-tight"
-                style={{ fontFamily: 'var(--font-display)', color: 'var(--color-cream)' }}
+            <div className="flex items-start gap-4">
+              <div
+                className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 shadow-sm"
+                style={{
+                  border: '1.5px solid var(--color-ochre)',
+                  backgroundColor: 'var(--color-cream)',
+                }}
               >
-                {siteName.includes('Foundation')
-                  ? siteName.replace('Foundation', '\nFoundation').split('\n').map((part, i) => (
-                      <span key={i}>{part}{i === 0 && <br />}</span>
-                    ))
-                  : siteName}
-              </h2>
-              <div className="flex items-center gap-1.5 mt-2.5">
-                <div className="h-px w-6" style={{ backgroundColor: 'var(--color-ochre)' }} />
-                <div className="w-1 h-1 rotate-45" style={{ backgroundColor: 'var(--color-ochre)', flexShrink: 0 }} />
-                <div className="h-px w-6" style={{ backgroundColor: 'var(--color-ochre)' }} />
+                <Image
+                  src="/images/logo.jpeg"
+                  alt="LANGO CULTURAL INSTITUTION Emblem"
+                  fill
+                  className="object-contain p-0.5"
+                />
+              </div>
+              <div>
+                <h2
+                  className="text-xl font-600 tracking-wider uppercase leading-tight"
+                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-cream)' }}
+                >
+                  LANGO CULTURAL<br />INSTITUTION
+                </h2>
+                <span
+                  className="text-[0.62rem] tracking-[0.2em] uppercase block mt-1"
+                  style={{ color: 'var(--color-ochre-light)', fontFamily: 'var(--font-body)' }}
+                >
+                  Tekwaro Lango · Uganda
+                </span>
+                <div className="flex items-center gap-1.5 mt-2.5">
+                  <div className="h-px w-6" style={{ backgroundColor: 'var(--color-ochre)' }} />
+                  <div className="w-1 h-1 rotate-45" style={{ backgroundColor: 'var(--color-ochre)', flexShrink: 0 }} />
+                  <div className="h-px w-6" style={{ backgroundColor: 'var(--color-ochre)' }} />
+                </div>
               </div>
             </div>
 
@@ -191,7 +210,7 @@ export default function Footer({ footerNav, siteSettings }: FooterProps) {
               className="text-xs mb-4 leading-relaxed"
               style={{ color: 'rgba(245,239,224,0.5)' }}
             >
-              Lango Cultural Foundation serves ~2.7 million people across nine districts of
+              LANGO CULTURAL INSTITUTION serves ~2.7 million people across nine districts of
               north-central Uganda.
             </p>
             <ul className="grid grid-cols-3 gap-x-2 gap-y-2">
@@ -224,7 +243,7 @@ export default function Footer({ footerNav, siteSettings }: FooterProps) {
                 className="text-xs leading-relaxed"
                 style={{ color: 'rgba(245,239,224,0.35)' }}
               >
-                Domains: lcf.or.ug · langoculturalfoundation.org
+                Portal: tekwarolango.org · lci.or.ug
               </p>
             </div>
           </div>

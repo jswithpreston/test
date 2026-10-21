@@ -32,7 +32,7 @@ async function seed(payload: Payload) {
               children: [
                 {
                   type: 'text',
-                  text: 'Eng. Dr. Michael Moses Odongo Okune was elected as the Won Nyaci (Paramount Chief) of the Lango people on March 1, 2024, and was officially sworn in on February 5, 2025. He is an engineer and holds a doctorate degree. He leads the Lango Cultural Foundation in its mission to preserve and promote Lango heritage across the nine districts of the Lango sub-region.',
+                  text: 'Eng. Dr. Michael Moses Odongo Okune was elected as the Won Nyaci (Paramount Chief) of the Lango people on March 1, 2024, and was officially sworn in on February 5, 2025. He is an engineer and holds a doctorate degree. He leads the LANGO CULTURAL INSTITUTION in its mission to preserve and promote Lango heritage across the nine districts of the Lango sub-region.',
                   version: 1,
                 },
               ],
@@ -60,7 +60,7 @@ async function seed(payload: Payload) {
               children: [
                 {
                   type: 'text',
-                  text: 'Eng. James Robert Ajal serves as the Prime Minister of the Lango Cultural Foundation, supporting the Won Nyaci in the administration of the institution and coordination of its 11 ministries.',
+                  text: 'Eng. James Robert Ajal serves as the Prime Minister of the LANGO CULTURAL INSTITUTION, supporting the Won Nyaci in the administration of the institution and coordination of its 11 ministries.',
                   version: 1,
                 },
               ],
@@ -135,7 +135,7 @@ async function seed(payload: Payload) {
       category: 'education' as const,
       status: 'active' as const,
       summary:
-        'LCF secures scholarships and educational opportunities for young Lango across Uganda and beyond.',
+        'LANGO CULTURAL INSTITUTION secures scholarships and educational opportunities for young Lango across Uganda and beyond.',
       highlights: [
         { text: '500+ scholarships secured in 2024' },
         { text: 'Over 2,000 scholarships in 2025' },
@@ -163,7 +163,7 @@ async function seed(payload: Payload) {
       category: 'peace' as const,
       status: 'active' as const,
       summary:
-        'LCF convenes community dialogues and reconciliation meetings to heal divisions and promote unity across the Lango sub-region.',
+        'LANGO CULTURAL INSTITUTION convenes community dialogues and reconciliation meetings to heal divisions and promote unity across the Lango sub-region.',
       highlights: [
         { text: 'Post-election healing and conflict resolution initiatives' },
         { text: 'Community dialogue forums across all nine districts' },
@@ -172,12 +172,12 @@ async function seed(payload: Payload) {
       ],
     },
     {
-      title: 'Women Empowerment — Agong Foundation',
+      title: 'Women Empowerment — Agong Initiative',
       slug: 'women-empowerment',
       category: 'women' as const,
       status: 'active' as const,
       summary:
-        'The Agong Foundation works to empower women and girls in the Lango sub-region through education, economic opportunities, and protection from harmful practices.',
+        'The Agong Initiative works to empower women and girls in the Lango sub-region through education, economic opportunities, and protection from harmful practices.',
       highlights: [
         { text: 'Advocacy against gender-based violence' },
         { text: "Support for girls' education and retention in schools" },
@@ -229,7 +229,7 @@ async function seed(payload: Payload) {
         'Eng. Dr. Michael Moses Odongo Okune was officially sworn in as the Won Nyaci (Paramount Chief) of the Lango people on February 5, 2025, in a ceremony attended by government officials and thousands of Lango from across the sub-region.',
     },
     {
-      title: 'Lango Cultural Foundation Launches Greening Lango Initiative',
+      title: 'LANGO CULTURAL INSTITUTION Launches Greening Lango Initiative',
       slug: 'greening-lango-launch-2025',
       status: 'published' as const,
       category: 'programme-update',
@@ -238,22 +238,22 @@ async function seed(payload: Payload) {
         'The Won Nyaci announced the official launch of the Greening Lango programme, with a bold target of planting one million trees across the nine districts of the Lango sub-region to combat deforestation and climate change.',
     },
     {
-      title: 'LCF Secures Over 2,000 Scholarships for Lango Students in 2025',
+      title: 'LANGO CULTURAL INSTITUTION Secures Over 2,000 Scholarships for Lango Students in 2025',
       slug: 'scholarships-2025',
       status: 'published' as const,
       category: 'programme-update',
       publishedAt: '2025-04-01T10:00:00.000Z',
       excerpt:
-        'The Lango Cultural Foundation has secured over 2,000 scholarships for students from the Lango sub-region in 2025, building on the 500+ scholarships achieved in 2024. Partnerships with universities across Uganda have been key to this achievement.',
+        'The LANGO CULTURAL INSTITUTION has secured over 2,000 scholarships for students from the Lango sub-region in 2025, building on the 500+ scholarships achieved in 2024. Partnerships with universities across Uganda have been key to this achievement.',
     },
     {
-      title: 'LCF Convenes Peace and Development Meeting to Heal Post-Election Divisions',
+      title: 'LANGO CULTURAL INSTITUTION Convenes Peace and Development Meeting to Heal Post-Election Divisions',
       slug: 'peace-meeting-2026',
       status: 'published' as const,
       category: 'community',
       publishedAt: '2026-02-28T10:00:00.000Z',
       excerpt:
-        'The Lango Cultural Foundation brought together leaders, elders, and community representatives from across the sub-region to address post-election tensions and chart a path towards unity and development.',
+        'The LANGO CULTURAL INSTITUTION brought together leaders, elders, and community representatives from across the sub-region to address post-election tensions and chart a path towards unity and development.',
     },
   ]
 
